@@ -1,13 +1,14 @@
 {
-  "name": "three-seed",
-  "version": "0.4.0",
-  "description": "Three.js starter project boilerplate bundled with webpack",
+  "name": "organic-settlement-simulator",
+  "version": "0.0.1",
+  "description": "Simulation of organic growing settlements based on slime mold (Physarum)",
   "keywords": [
     "webgl",
-    "boilerplate",
+    "physarum",
     "three.js",
     "es6",
-    "webpack"
+    "webpack",
+    "simulator"
   ],
   "scripts": {
     "start": "TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve",
