@@ -1,0 +1,46 @@
+{
+  "name": "three-seed",
+  "version": "0.4.0",
+  "description": "Three.js starter project boilerplate bundled with webpack",
+  "keywords": [
+    "webgl",
+    "boilerplate",
+    "three.js",
+    "es6",
+    "webpack"
+  ],
+  "scripts": {
+    "start": "TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve",
+    "prebuild": "rimraf ./build && mkdir ./build",
+    "build": "TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --mode production"
+  },
+  "dependencies": {
+    "three": "^0.129.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@types/node": "^16.10.1",
+    "@types/three": "^0.131.1",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "raw-loader": "^4.0.2",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^9.2.5",
+    "ts-node": "^10.2.1",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.3",
+    "webpack": "^5.38.1",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-glsl-loader": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
