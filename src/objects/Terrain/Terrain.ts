@@ -4,10 +4,14 @@ import postprocessing_frag from "./terrain.frag";
 
 export default class Terrain extends Object3D {
   // Average dimensions of medieval settlements (1sq mile) in km
+  static lenght = 1609.344;
+  static width = 1609.344;
+  static height = 0;
+
   constructor(
-    readonly lenght = 1609.344,
-    readonly width = 1609.344,
-    readonly height = 0
+    readonly lenght = Terrain.lenght,
+    readonly width = Terrain.lenght,
+    readonly height = Terrain.height
   ) {
     super();
 
