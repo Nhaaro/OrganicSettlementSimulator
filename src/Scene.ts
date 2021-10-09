@@ -1,6 +1,6 @@
 import { Scene, Vector3 } from "three";
-import Terrain from "./Terrain/Terrain";
-import Agent from "../Agent";
+import Terrain from "./objects/Terrain/Terrain";
+import Agent from "./Agent";
 
 export default class cityScene extends Scene {
   agents: Agent[] = new Array(1000);
