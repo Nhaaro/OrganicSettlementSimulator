@@ -27,7 +27,8 @@ export default class Agent {
       LEFT = -width,
     }
 
-    const prediction = (location: number) => location + deltaTime * this.stride;
+    const prediction = (location: number) =>
+      location + deltaTime * this.stride * this.speed;
     const degreeToRad = (degree: number) => (degree * Math.PI) / 180;
     const randomRange = (min: number, max: number) =>
       Math.floor(Math.random() * (max - min + 1) + min);
@@ -47,8 +48,10 @@ export default class Agent {
       this.angle = angleInRange(-90, 90);
 
     this.position = new Vector3(
-      this.position.x + Math.cos(this.angle) * deltaTime * this.stride,
-      this.position.y + Math.sin(this.angle) * deltaTime * this.stride,
+      this.position.x +
+        Math.cos(this.angle) * deltaTime * this.stride * this.speed,
+      this.position.y +
+        Math.sin(this.angle) * deltaTime * this.stride * this.speed,
       this.position.z
     );
   }
