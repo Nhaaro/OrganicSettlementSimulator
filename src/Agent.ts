@@ -77,11 +77,12 @@ export default class Agent {
 
     const positions = geometry.attributes.position.array as number[];
 
+    let id: number;
     agents.forEach(({ position: { x, y, z } }, i) => {
-      const id = i * 3;
-      positions[id + 0] = x;
-      positions[id + 1] = y;
-      positions[id + 2] = z;
+      id = i * 3;
+      positions[id++] = x;
+      positions[id++] = y;
+      positions[id++] = z;
     });
 
     geometry.attributes.position.needsUpdate = true;
