@@ -5,6 +5,7 @@ import {
   PointsMaterial,
   Vector3,
 } from "three";
+import Terrain from "./objects/Terrain";
 
 export default class Agent {
   material = new PointsMaterial({ color: 0xffffff, size: 0.25 });
@@ -18,13 +19,13 @@ export default class Agent {
   }
 
   move(deltaTime: number): void {
-    const width = 1609.344 / 2;
-    const height = 1609.344 / 2;
+    const lenght = Terrain.lenght / 2;
+    const width = Terrain.width / 2;
     enum bound {
-      TOP = height,
-      RIGHT = width,
-      BOTTOM = -height,
-      LEFT = -width,
+      TOP = width,
+      RIGHT = lenght,
+      BOTTOM = -width,
+      LEFT = -lenght,
     }
 
     const prediction = (location: number) =>
