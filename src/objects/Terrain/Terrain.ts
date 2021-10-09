@@ -2,7 +2,7 @@ import { Mesh, Object3D, PlaneBufferGeometry, ShaderMaterial } from "three";
 import quad_vert from "./quad.vert";
 import postprocessing_frag from "./terrain.frag";
 
-export default class Land extends Object3D {
+export default class Terrain extends Object3D {
   // Average dimensions of medieval settlements (1sq mile) in km
   constructor(
     readonly lenght = 1609.344,

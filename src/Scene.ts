@@ -1,5 +1,5 @@
 import { Scene, Vector3 } from "three";
-import Terrain from "./objects/Terrain/Terrain";
+import Terrain from "./objects/Terrain";
 import Agent from "./Agent";
 
 export default class cityScene extends Scene {
