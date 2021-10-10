@@ -10,8 +10,7 @@ import Terrain from "./objects/Terrain";
 export default class Agent {
   material = new PointsMaterial({ color: 0xffffff, size: 0.25 });
   /** Average stride lenght in meters */
-  stride = 1.39;
-  speed = 1;
+  velocity = 1.39;
   static particles: Points<BufferGeometry, PointsMaterial>;
 
   constructor(private position: Vector3, private angle: number) {
@@ -28,8 +27,6 @@ export default class Agent {
       LEFT = -lenght,
     }
 
-    const prediction = (location: number) =>
-      location + deltaTime * this.stride * this.speed;
     const degreeToRad = (degree: number) => (degree * Math.PI) / 180;
     const randomRange = (min: number, max: number) =>
       Math.floor(Math.random() * (max - min + 1) + min);
@@ -39,22 +36,26 @@ export default class Agent {
 
     // TODO: move to own method that handles collision
     // Pick new random move dir if close to boundary
-    if (prediction(this.position.y + 1) > bound.TOP)
+    if (this.calculateNextPosition(this.velocity, deltaTime).y > bound.TOP)
       this.angle = angleInRange(180, 360);
-    if (prediction(this.position.x + 1) > bound.RIGHT)
+    if (this.calculateNextPosition(this.velocity, deltaTime).x > bound.RIGHT)
       this.angle = angleInRange(90, 270);
-    if (prediction(this.position.y - 1) < bound.BOTTOM)
+    if (this.calculateNextPosition(this.velocity, deltaTime).y < bound.BOTTOM)
       this.angle = angleInRange(0, 180);
-    if (prediction(this.position.x - 1) < bound.LEFT)
+    if (this.calculateNextPosition(this.velocity, deltaTime).x < bound.LEFT)
       this.angle = angleInRange(-90, 90);
 
-    this.position = new Vector3(
-      this.position.x +
-        Math.cos(this.angle) * deltaTime * this.stride * this.speed,
-      this.position.y +
-        Math.sin(this.angle) * deltaTime * this.stride * this.speed,
-      this.position.z
-    );
+    this.position = this.calculateNextPosition(this.velocity, deltaTime);
+  }
+
+  private calculateNextPosition(distance: number, deltaTime: number): Vector3 {
+    const newPosition = this.position.clone();
+
+    newPosition.x += distance * Math.cos(this.angle) * deltaTime;
+    newPosition.y += distance * Math.sin(this.angle) * deltaTime;
+    // newPosition.z += distance * Math.???(this.angle) * deltaTime;
+
+    return newPosition;
   }
 
   static createPointCloud(agents: Agent[]): void {
